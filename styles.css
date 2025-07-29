@@ -1,0 +1,533 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.app-container {
+    max-width: 414px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.app-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.app-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.app-header p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.screen {
+    display: none;
+    padding: 20px;
+    min-height: calc(100vh - 120px);
+}
+
+.screen.active {
+    display: block;
+}
+
+.artisan-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.artisan-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.artisan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-color: #3498db;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.artisan-card h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.artisan-card p {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    line-height: 1.4;
+}
+
+.screen-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.back-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 15px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #2980b9;
+}
+
+.artisans-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.artisan-item {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid #3498db;
+}
+
+.artisan-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.artisan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.artisan-name {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.distance-badge {
+    background: #e74c3c;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.artisan-address {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.artisan-address i {
+    margin-right: 8px;
+    color: #3498db;
+}
+
+.artisan-phone {
+    color: #27ae60;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.artisan-phone i {
+    margin-right: 8px;
+}
+
+.detail-content {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.detail-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.detail-section {
+    margin-bottom: 20px;
+}
+
+.detail-section h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.detail-section h3 i {
+    margin-right: 10px;
+    color: #3498db;
+}
+
+.contact-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-item i {
+    margin-right: 10px;
+    color: #3498db;
+    width: 20px;
+}
+
+.call-btn, .directions-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.call-btn {
+    background: #27ae60;
+    color: white;
+}
+
+.call-btn:hover {
+    background: #219a52;
+}
+
+.directions-btn {
+    background: #3498db;
+    color: white;
+}
+
+.directions-btn:hover {
+    background: #2980b9;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 300px;
+    margin: 20px;
+}
+
+.modal-content h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+}
+
+.btn-secondary {
+    background: #ecf0f1;
+    color: #7f8c8d;
+}
+
+.btn-secondary:hover {
+    background: #d5dbdb;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+}
+
+.loading i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* PWA Specific Styles */
+@media (display-mode: standalone) {
+    .app-header {
+        padding-top: env(safe-area-inset-top, 20px);
+        padding-top: calc(env(safe-area-inset-top) + 20px);
+    }
+    
+    body {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .app-container {
+        height: 100vh;
+        height: calc(100vh - env(safe-area-inset-bottom));
+    }
+}
+
+/* Enhanced Mobile Styles */
+@media (max-width: 480px) {
+    .app-container {
+        max-width: 100%;
+    }
+    
+    .artisan-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .artisan-card {
+        padding: 16px;
+        margin: 0 5px;
+    }
+    
+    .card-icon {
+        font-size: 2rem;
+    }
+    
+    .artisan-card h3 {
+        font-size: 0.95rem;
+    }
+    
+    .artisan-card p {
+        font-size: 0.75rem;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+    
+    .screen {
+        padding: 15px;
+    }
+    
+    .artisan-item {
+        padding: 12px;
+        margin: 0 5px;
+    }
+    
+    .detail-content {
+        padding: 15px;
+        margin: 0 5px;
+    }
+    
+    .call-btn, .directions-btn {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Touch and Gesture Enhancements */
+.artisan-card, .artisan-item, .back-btn, .call-btn, .directions-btn {
+    -webkit-tap-highlight-color: rgba(52, 152, 219, 0.3);
+    touch-action: manipulation;
+}
+
+/* Loading States */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #ecf0f1;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Smooth Transitions */
+.screen {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.screen:not(.active) {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.screen.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Enhanced Shadows for Depth */
+.artisan-card:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.artisan-item:active {
+    transform: translateX(2px) scale(0.98);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Status Bar Safe Area */
+@supports (padding: max(0px)) {
+    .app-header {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+    }
+    
+    .screen {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+    
+    .app-container {
+        background: #2c3e50;
+        color: #ecf0f1;
+    }
+    
+    .artisan-card, .artisan-item, .detail-content {
+        background: #34495e;
+        color: #ecf0f1;
+        border-color: #4a5f7a;
+    }
+    
+    .contact-info {
+        background: #2c3e50;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .loading i {
+        animation: none;
+    }
+}

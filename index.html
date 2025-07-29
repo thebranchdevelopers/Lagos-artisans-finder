@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagos Artisans Finder</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Find skilled artisans near you in Lagos, Nigeria. Connect with electricians, mechanics, plumbers, and more professional service providers.">
+    <meta name="keywords" content="Lagos, artisans, electricians, mechanics, plumbers, phone repair, laptop repair, Nigeria">
+    <meta name="author" content="Lagos Artisans Finder">
+    
+    <!-- Mobile App Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Lagos Artisans">
+    <meta name="application-name" content="Lagos Artisans">
+    <meta name="msapplication-TileColor" content="#2c3e50">
+    <meta name="theme-color" content="#2c3e50">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://via.placeholder.com/180x180/2c3e50/ffffff?text=LA">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://via.placeholder.com/32x32/2c3e50/ffffff?text=LA">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://via.placeholder.com/16x16/2c3e50/ffffff?text=LA">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1><i class="fas fa-tools"></i> Lagos Artisans Finder</h1>
+            <p>Find skilled artisans near you in Lagos, Nigeria</p>
+        </header>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen active">
+            <div class="artisan-grid">
+                <div class="artisan-card" data-category="washing-machine">
+                    <div class="card-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Washing Machine Repairer</h3>
+                    <p>Expert washing machine repair services</p>
+                </div>
+
+                <div class="artisan-card" data-category="electrician">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Electricians</h3>
+                    <p>Professional electrical services</p>
+                </div>
+
+                <div class="artisan-card" data-category="mechanic">
+                    <div class="card-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Mechanics</h3>
+                    <p>Auto repair and maintenance</p>
+                </div>
+
+                <div class="artisan-card" data-category="plumber">
+                    <div class="card-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Plumbers</h3>
+                    <p>Plumbing and water system repairs</p>
+                </div>
+
+                <div class="artisan-card" data-category="phone-repairer">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Phone Repairers</h3>
+                    <p>Mobile phone repair specialists</p>
+                </div>
+
+                <div class="artisan-card" data-category="laptop-repairer">
+                    <div class="card-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Laptop Repairers</h3>
+                    <p>Computer and laptop repair services</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artisan List Screen -->
+        <div id="artisan-list" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showMainMenu()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2 id="category-title">Artisans</h2>
+            </div>
+            <div id="artisans-container" class="artisans-list">
+                <!-- Artisan items will be populated here -->
+            </div>
+        </div>
+
+        <!-- Artisan Detail Screen -->
+        <div id="artisan-detail" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showArtisanList()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2 id="artisan-name">Artisan Details</h2>
+            </div>
+            <div id="artisan-detail-content" class="detail-content">
+                <!-- Artisan details will be populated here -->
+            </div>
+        </div>
+
+        <!-- Location Permission Modal -->
+        <div id="location-modal" class="modal">
+            <div class="modal-content">
+                <h3><i class="fas fa-map-marker-alt"></i> Enable Location</h3>
+                <p>Allow location access to calculate distance to artisans</p>
+                <div class="modal-buttons">
+                    <button onclick="requestLocation()" class="btn-primary">Allow</button>
+                    <button onclick="closeLocationModal()" class="btn-secondary">Skip</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        // Register service worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New content is available, prompt user to refresh
+                                    if (confirm('New version available! Refresh to update?')) {
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+        
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
+            
+            // Show install button or banner
+            showInstallPromotion();
+        });
+        
+        function showInstallPromotion() {
+            // Create install banner
+            const installBanner = document.createElement('div');
+            installBanner.id = 'install-banner';
+            installBanner.innerHTML = `
+                <div style="background: linear-gradient(135deg, #2c3e50, #3498db); color: white; padding: 15px; text-align: center; position: fixed; top: 0; left: 0; right: 0; z-index: 9999; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+                    <p style="margin: 0 0 10px 0; font-weight: bold;">📱 Install Lagos Artisans Finder</p>
+                    <p style="margin: 0 0 15px 0; font-size: 0.9rem;">Add to your home screen for quick access!</p>
+                    <button onclick="installApp()" style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-right: 10px; cursor: pointer; font-weight: bold;">Install App</button>
+                    <button onclick="dismissInstall()" style="background: transparent; color: white; border: 1px solid white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Maybe Later</button>
+                </div>
+            `;
+            document.body.appendChild(installBanner);
+            
+            // Adjust body padding to account for banner
+            document.body.style.paddingTop = '120px';
+        }
+        
+        function installApp() {
+            if (deferredPrompt) {
+                // Show the prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                    dismissInstall();
+                });
+            }
+        }
+        
+        function dismissInstall() {
+            const banner = document.getElementById('install-banner');
+            if (banner) {
+                banner.remove();
+                document.body.style.paddingTop = '0';
+            }
+        }
+        
+        // Track app install
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('Lagos Artisans Finder was installed');
+            dismissInstall();
+        });
+        
+        // Handle URL parameters for shortcuts
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            if (category && artisansData[category]) {
+                // Wait for app to initialize, then show category
+                setTimeout(() => {
+                    showArtisanList(category);
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>

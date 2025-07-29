@@ -1,0 +1,125 @@
+{
+  "name": "Lagos Artisans Finder",
+  "short_name": "Lagos Artisans",
+  "description": "Find skilled artisans near you in Lagos, Nigeria. Connect with electricians, mechanics, plumbers, and more professional service providers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#2c3e50",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["business", "utilities", "lifestyle", "productivity"],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/72x72/2c3e50/ffffff?text=LA",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://via.placeholder.com/96x96/2c3e50/ffffff?text=LA",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://via.placeholder.com/128x128/2c3e50/ffffff?text=LA",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://via.placeholder.com/144x144/2c3e50/ffffff?text=LA",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://via.placeholder.com/152x152/2c3e50/ffffff?text=LA",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://via.placeholder.com/192x192/2c3e50/ffffff?text=LA",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://via.placeholder.com/384x384/2c3e50/ffffff?text=LA",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512/2c3e50/ffffff?text=LA",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://via.placeholder.com/390x844/667eea/ffffff?text=Lagos+Artisans+Mobile",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Lagos Artisans Finder mobile view"
+    },
+    {
+      "src": "https://via.placeholder.com/1024x768/667eea/ffffff?text=Lagos+Artisans+Desktop",
+      "sizes": "1024x768",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Lagos Artisans Finder desktop view"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Find Electricians",
+      "short_name": "Electricians",
+      "description": "Find electrical service providers",
+      "url": "/?category=electrician",
+      "icons": [
+        {
+          "src": "https://via.placeholder.com/96x96/f39c12/ffffff?text=⚡",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Find Mechanics",
+      "short_name": "Mechanics",
+      "description": "Find auto repair services",
+      "url": "/?category=mechanic",
+      "icons": [
+        {
+          "src": "https://via.placeholder.com/96x96/e74c3c/ffffff?text=🚗",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Find Plumbers",
+      "short_name": "Plumbers",
+      "description": "Find plumbing services",
+      "url": "/?category=plumber",
+      "icons": [
+        {
+          "src": "https://via.placeholder.com/96x96/3498db/ffffff?text=🔧",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
